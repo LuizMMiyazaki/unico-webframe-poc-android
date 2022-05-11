@@ -1,0 +1,17 @@
+{
+    "project_info": {
+        "project_number": "0973394543920854133",
+        "project_id": "POC N2",
+        "project_j_apikey": "j_09fb7de3-3e9d-4543-9a2a-eb08d54ec133"
+    },
+    "client_info": {
+        "mobilesdk_app_id": "1:8607:android",
+        "android_client_info": {
+            "package_name": "com.example.unico_webframe_poc_android"
+        }
+    },
+    "host_info": {
+        "host_info": "B+2O5141Qrvr9FcK3Z4a1iQeyPQEYHCvJ6IkN4JNpNzYisHkI9wo21bQ1juBi6Rx",
+        "host_key": "6bOJ9Z+yJQbDRHyFoh09z7Zv8dD1Vt3Z/DaOefC1l85Jk98QkJScmvdNRbusYQMp"
+    }
+}
