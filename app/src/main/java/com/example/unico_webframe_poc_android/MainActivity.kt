@@ -17,6 +17,9 @@ import com.acesso.acessobio_android.services.dto.ResultCamera
 
 
 class MainActivity : AppCompatActivity() {
+    lateinit var unicoCheckCamera: UnicoCheckCamera
+    lateinit var cameraListener: iAcessoBioSelfie
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,31 +42,31 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val acessoBioBuilder: IAcessoBioBuilder = AcessoBio(this, callback)
+        val acessoBioBuilder = AcessoBio(this, callback)
 
-        val unicoCheckCamera: UnicoCheckCamera = acessoBioBuilder
+        unicoCheckCamera = acessoBioBuilder
             .setAutoCapture(true)
             .setSmartFrame(true)
             .build()
 
-        val cameraListener: iAcessoBioSelfie = object : iAcessoBioSelfie {
+        cameraListener = object : iAcessoBioSelfie {
             override fun onSuccessSelfie(result: ResultCamera?) {}
 
             override fun onErrorSelfie(errorBio: ErrorBio?) {}
         }
+    }
 
-        fun openCamera(view: View){
-            unicoCheckCamera.prepareSelfieCamera("android-sem-liveness.json", object : SelfieCameraListener {
-                override fun onCameraReady(cameraOpener: UnicoCheckCameraOpener.Selfie?) {
-                    cameraOpener?.open(cameraListener)
-                }
+    fun openCamera(view: View){
+        unicoCheckCamera.prepareSelfieCamera("android-sem-liveness.json", object : SelfieCameraListener {
+            override fun onCameraReady(cameraOpener: UnicoCheckCameraOpener.Selfie?) {
+                cameraOpener?.open(cameraListener)
+            }
 
-                override fun onCameraFailed(message: String?) {
-                    if (message != null) {
-                        Log.e(TAG, message)
-                    }
+            override fun onCameraFailed(message: String?) {
+                if (message != null) {
+                    Log.e(TAG, message)
                 }
-            })
-        }
+            }
+        })
     }
 }
