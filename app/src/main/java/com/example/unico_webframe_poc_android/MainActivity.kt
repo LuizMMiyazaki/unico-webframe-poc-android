@@ -57,24 +57,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun openCamera(view: View){
-        Thread(Runnable {
-            unicoCheckCamera.prepareSelfieCamera(
-                "android-sem-liveness.json",
-                object : SelfieCameraListener {
-                    override fun onCameraReady(cameraOpener: UnicoCheckCameraOpener.Selfie?) {
-                        cameraOpener?.open(cameraListener)
-                    }
-
-                    override fun onCameraFailed(message: String?) {
-                        if (message != null) {
-                            Log.e(TAG, message)
-                        }
-                    }
-                })
-        }).start()
-    }
-
     fun openLivenessCamera(view: View){
         Thread(Runnable {
             unicoCheckCamera.prepareSelfieCamera(
